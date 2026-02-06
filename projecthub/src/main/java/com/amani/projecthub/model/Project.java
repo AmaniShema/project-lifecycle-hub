@@ -2,6 +2,9 @@ package com.amani.projecthub.model;
 
 import jakarta.persistence.*;
 import java.time.LocalDateTime;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Table;
+
 
 @Entity
 @Table(name = "projects")
