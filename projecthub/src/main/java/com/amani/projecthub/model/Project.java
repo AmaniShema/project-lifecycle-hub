@@ -4,6 +4,7 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import jakarta.persistence.Entity;
 import jakarta.persistence.Table;
+import java.util.List;
 
 
 @Entity
@@ -24,6 +25,10 @@ public class Project {
     private String currentStage; // e.g. IDEA, PLANNING, BUILDING, TESTING, LAUNCH, MAINTENANCE
 
     private LocalDateTime createdAt;
+
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Stage> stages;
+
 
     public Project() {
         // JPA needs a no-args constructor
@@ -74,4 +79,12 @@ public class Project {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+    public List<Stage> getStages() {
+        return stages;
+    }
+
+    public void setStages(List<Stage> stages) {
+        this.stages = stages;
+    }
+
 }
