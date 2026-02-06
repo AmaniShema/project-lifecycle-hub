@@ -1,5 +1,5 @@
 package com.amani.projecthub.model;
-
+import java.util.List;
 import jakarta.persistence.*;
 
 @Entity
@@ -18,6 +18,13 @@ public class Stage {
     private Project project;
 
     public Stage() {}
+
+    @OneToMany(mappedBy = "stage", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks;
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
 
     public Stage(String name, Project project) {
         this.name = name;

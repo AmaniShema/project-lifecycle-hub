@@ -29,6 +29,14 @@ public class Project {
     @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Stage> stages;
 
+    @OneToMany(mappedBy = "project", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Task> tasks;
+
+    public List<Task> getTasks() {
+        return tasks;
+    }
+
+
 
     public Project() {
         // JPA needs a no-args constructor
