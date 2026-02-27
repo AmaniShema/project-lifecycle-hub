@@ -1,0 +1,6 @@
+**File: `~/Projects/projecthub-frontend/.dockerignore`**
+```
+.git/
+*.md
+Dockerfile
+.dockerignore

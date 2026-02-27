@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Detail — Life-Cycle Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1>⬡ Project Life-Cycle Hub</h1>
+    <div class="navbar-right">
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+        🌙 Dark
+      </button>
+    </div>
+  </nav>
+
+  <div class="container">
+
+    <div class="back-link" onclick="window.location.href='index.html'">
+      ← Back to Dashboard
+    </div>
+
+    <div class="project-detail-header" id="project-header">
+      <div style="color:var(--text-muted);">Loading project...</div>
+    </div>
+
+    <div class="stages-section">
+      <h3>Life-Cycle Stages</h3>
+      <div class="stages-list" id="stages-list"></div>
+    </div>
+
+    <div class="milestone-section">
+      <div class="milestone-section-header">
+        <h3>📅 Milestones</h3>
+        <button class="btn btn-primary"
+          onclick="toggleAddMilestoneForm()"
+          id="add-milestone-btn">
+          + Add Milestone
+        </button>
+      </div>
+      <div class="milestone-list" id="milestone-list"></div>
+      <div class="add-milestone-form" id="add-milestone-form">
+        <h4>New Milestone</h4>
+        <div class="form-row">
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="milestone-title">Title *</label>
+            <input type="text" id="milestone-title"
+              placeholder="e.g. MVP Complete" maxlength="200" />
+          </div>
+          <div class="form-group" style="margin-bottom:0;">
+            <label for="milestone-date">Due Date *</label>
+            <input type="date" id="milestone-date" />
+          </div>
+        </div>
+        <div class="form-actions">
+          <button class="btn btn-secondary"
+            onclick="toggleAddMilestoneForm()">Cancel</button>
+          <button class="btn btn-primary"
+            onclick="submitAddMilestone()">Save Milestone</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>

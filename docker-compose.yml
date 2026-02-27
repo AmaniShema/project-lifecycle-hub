@@ -1,0 +1,81 @@
+version: '3.9'
+
+services:
+
+  # ──────────────────────────────────────────────
+  # PostgreSQL Database Container
+  # ──────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    container_name: projecthub-postgres
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: projecthub
+      POSTGRES_USER: projecthub_user
+      POSTGRES_PASSWORD: projecthub_pass
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    ports:
+      - "5433:5432"
+    networks:
+      - projecthub-network
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U projecthub_user -d projecthub"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ──────────────────────────────────────────────
+  # Spring Boot Backend Container
+  # ──────────────────────────────────────────────
+  backend:
+    build:
+      context: ./projecthub
+      dockerfile: Dockerfile
+    container_name: projecthub-backend
+    restart: unless-stopped
+    environment:
+      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/projecthub
+      SPRING_DATASOURCE_USERNAME: projecthub_user
+      SPRING_DATASOURCE_PASSWORD: projecthub_pass
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      SPRING_JPA_SHOW_SQL: "false"
+      SERVER_PORT: 8080
+    ports:
+      - "8080:8080"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    networks:
+      - projecthub-network
+
+  # ──────────────────────────────────────────────
+  # Nginx Frontend Container
+  # ──────────────────────────────────────────────
+  frontend:
+    build:
+      context: ./projecthub-frontend
+      dockerfile: Dockerfile
+    container_name: projecthub-frontend
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    depends_on:
+      - backend
+    networks:
+      - projecthub-network
+
+# ──────────────────────────────────────────────
+# Named volume for persistent database storage
+# Data survives container restarts
+# ──────────────────────────────────────────────
+volumes:
+  postgres_data:
+
+# ──────────────────────────────────────────────
+# Internal network — containers talk to each
+# other by service name, not by localhost
+# ──────────────────────────────────────────────
+networks:
+  projecthub-network:
+    driver: bridge

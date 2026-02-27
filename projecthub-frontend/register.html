@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Register — Project Life-Cycle Hub</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+
+  <nav class="navbar">
+    <h1>⬡ Project Life-Cycle Hub</h1>
+    <div class="navbar-right">
+      <button class="theme-toggle" id="theme-toggle" onclick="toggleTheme()">
+        🌙 Dark
+      </button>
+    </div>
+  </nav>
+
+  <div class="auth-wrapper">
+    <div class="auth-card">
+
+      <div class="auth-header">
+        <div class="auth-icon">⬡</div>
+        <h2>Create your account</h2>
+        <p>Start managing your projects the right way</p>
+      </div>
+
+      <div id="auth-error" class="auth-error" style="display:none;"></div>
+
+      <div class="form-group">
+        <label for="name">Full Name</label>
+        <input
+          type="text"
+          id="name"
+          placeholder="Amani"
+          maxlength="100"
+          onkeydown="if(event.key==='Enter') submitRegister()"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          placeholder="amani@example.com"
+          maxlength="150"
+          onkeydown="if(event.key==='Enter') submitRegister()"
+        />
+      </div>
+
+      <div class="form-group">
+        <label for="password">Password</label>
+        <div class="password-wrapper">
+          <input
+            type="password"
+            id="password"
+            placeholder="Minimum 6 characters"
+            maxlength="100"
+            onkeydown="if(event.key==='Enter') submitRegister()"
+          />
+          <button class="password-toggle"
+            onclick="togglePasswordVisibility('password', this)"
+            type="button">👁</button>
+        </div>
+      </div>
+
+      <button class="btn btn-primary btn-full" onclick="submitRegister()">
+        Create Account
+      </button>
+
+      <p class="auth-switch">
+        Already have an account?
+        <a href="login.html">Sign in</a>
+      </p>
+
+    </div>
+  </div>
+
+  <div class="toast" id="toast"></div>
+  <script src="app.js"></script>
+</body>
+</html>
