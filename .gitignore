@@ -1,0 +1,24 @@
+# Maven build output
+target/
+jpackage-input/
+
+# SQLite database (user data — never commit)
+*.db
+*.db-shm
+*.db-wal
+
+# User preferences
+.lifecyclehub.properties
+
+# IDE files
+.idea/
+*.iml
+.vscode/
+*.class
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log

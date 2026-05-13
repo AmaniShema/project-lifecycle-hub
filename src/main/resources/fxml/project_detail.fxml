@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane
+    xmlns="http://javafx.com/javafx/21"
+    xmlns:fx="http://javafx.com/fxml/1"
+    fx:controller="com.lifecyclehub.controller.ProjectDetailController"
+    styleClass="root-pane">
+
+    <!-- ═══════════════════════════════════════════
+         LEFT SIDEBAR
+         ═══════════════════════════════════════════ -->
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+
+            <VBox spacing="3" styleClass="sidebar-brand-section">
+                <Label text="OBSIDIAN"          styleClass="sidebar-brand"/>
+                <Label text="PROJECT LIFECYCLE" styleClass="sidebar-subtitle"/>
+                <Label text="LINEAR FLOW"       styleClass="sidebar-subtitle"/>
+            </VBox>
+
+            <Region styleClass="divider-line"/>
+
+            <VBox spacing="0" styleClass="sidebar-nav-section">
+                <Label text="STAGES" styleClass="sidebar-section-label"/>
+                <Button fx:id="sidebarIdea"        text="IDEA"        styleClass="sidebar-stage-btn" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarPlanning"    text="PLANNING"    styleClass="sidebar-stage-btn" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarBuilding"    text="BUILDING"    styleClass="sidebar-stage-btn" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarTesting"     text="TESTING"     styleClass="sidebar-stage-btn" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarLaunch"      text="LAUNCH"      styleClass="sidebar-stage-btn" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarMaintenance" text="MAINTENANCE" styleClass="sidebar-stage-btn" maxWidth="Infinity" alignment="CENTER_LEFT"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <VBox spacing="8" styleClass="sidebar-bottom-section">
+                <Button fx:id="themeToggleBtn" text="☀ Light"
+                        styleClass="btn-theme-toggle"
+                        onAction="#handleThemeToggle"
+                        maxWidth="Infinity"/>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- ═══════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════ -->
+    <center>
+        <VBox styleClass="main-content">
+
+            <!-- Header Bar -->
+            <HBox styleClass="app-header" alignment="CENTER_LEFT" spacing="6">
+                <Button text="← Dashboard" styleClass="nav-link" onAction="#handleBack"/>
+                <Label text="/" styleClass="header-slash"/>
+                <Label text="Workflow" styleClass="nav-link-active"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <!-- ✏ Edit button — Feature C -->
+                <Button fx:id="editProjectBtn"
+                        text="✏ Edit"
+                        styleClass="btn-ghost"
+                        onAction="#handleEditProject"/>
+                <Button fx:id="archiveBtn"
+                        text="🗄 Archive"
+                        styleClass="btn-archive"
+                        onAction="#handleArchive"/>
+                <Button fx:id="exportPdfBtn"
+                        text="Export PDF"
+                        styleClass="btn-ghost"
+                        onAction="#handleExportPdf"/>
+            </HBox>
+
+            <!-- Project Title + Progress -->
+            <VBox styleClass="project-header-section">
+                <HBox alignment="CENTER_LEFT" spacing="20">
+                    <VBox spacing="4" HBox.hgrow="ALWAYS">
+                        <Label text="CURRENT WORKSPACE" styleClass="workspace-label"/>
+                        <Label fx:id="projectNameLabel" text="Project Name"
+                               styleClass="project-name-label"/>
+                        <Label fx:id="stageLabel" text="Stage: IDEA"
+                               styleClass="project-stage-label"/>
+                    </VBox>
+                    <VBox alignment="TOP_RIGHT" spacing="3">
+                        <Label text="PROJECT VELOCITY" styleClass="project-velocity-label"/>
+                        <Label fx:id="progressLabel" text="0%"
+                               styleClass="project-pct-large"/>
+                    </VBox>
+                </HBox>
+                <ProgressBar fx:id="progressBar" progress="0"
+                             maxWidth="Infinity" styleClass="progress-bar"/>
+                <Region styleClass="progress-spacer"/>
+            </VBox>
+
+            <!-- Horizontal Stage Stepper -->
+            <HBox fx:id="stageStepperBox"
+                  styleClass="stage-stepper-container"
+                  spacing="0" alignment="CENTER_LEFT"/>
+
+            <!-- Stage Content -->
+            <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" hbarPolicy="NEVER"
+                        styleClass="main-scroll">
+                <VBox fx:id="stagesContainer" spacing="16"
+                      styleClass="stages-content-area"/>
+            </ScrollPane>
+
+        </VBox>
+    </center>
+
+</BorderPane>

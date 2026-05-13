@@ -1,0 +1,147 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.geometry.*?>
+
+<BorderPane
+        xmlns="http://javafx.com/javafx/21"
+        xmlns:fx="http://javafx.com/fxml/1"
+        fx:controller="com.lifecyclehub.controller.DashboardController"
+        styleClass="root-pane">
+
+    <!-- ═══════════════════════════════════════════
+         LEFT SIDEBAR
+         ═══════════════════════════════════════════ -->
+    <left>
+        <VBox styleClass="sidebar" spacing="0">
+
+            <!-- Brand -->
+            <VBox spacing="3" styleClass="sidebar-brand-section">
+                <Label text="OBSIDIAN"       styleClass="sidebar-brand"/>
+                <Label text="PROJECT LIFECYCLE" styleClass="sidebar-subtitle"/>
+                <Label text="LINEAR FLOW"    styleClass="sidebar-subtitle"/>
+            </VBox>
+
+            <Region styleClass="divider-line"/>
+
+            <!-- Stage Navigation -->
+            <VBox spacing="0" styleClass="sidebar-nav-section">
+                <Label text="STAGES" styleClass="sidebar-section-label"/>
+
+                <Button fx:id="sidebarIdea"
+                        text="IDEA" styleClass="sidebar-stage-btn"
+                        maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarPlanning"
+                        text="PLANNING" styleClass="sidebar-stage-btn"
+                        maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarBuilding"
+                        text="BUILDING" styleClass="sidebar-stage-btn"
+                        maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarTesting"
+                        text="TESTING" styleClass="sidebar-stage-btn"
+                        maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarLaunch"
+                        text="LAUNCH" styleClass="sidebar-stage-btn"
+                        maxWidth="Infinity" alignment="CENTER_LEFT"/>
+                <Button fx:id="sidebarMaintenance"
+                        text="MAINTENANCE" styleClass="sidebar-stage-btn"
+                        maxWidth="Infinity" alignment="CENTER_LEFT"/>
+            </VBox>
+
+            <Region VBox.vgrow="ALWAYS"/>
+
+            <!-- Bottom Controls -->
+            <VBox spacing="8" styleClass="sidebar-bottom-section">
+                <Button fx:id="themeToggleBtn"
+                        text="☀ Light"
+                        styleClass="btn-theme-toggle"
+                        onAction="#handleThemeToggle"
+                        maxWidth="Infinity"/>
+                <HBox spacing="6" alignment="CENTER_LEFT">
+                    <Label text="●" styleClass="sidebar-dot"/>
+                    <Label text="SYSTEM STATUS" styleClass="sidebar-status-label"/>
+                </HBox>
+            </VBox>
+
+        </VBox>
+    </left>
+
+    <!-- ═══════════════════════════════════════════
+         MAIN CONTENT
+         ═══════════════════════════════════════════ -->
+    <center>
+        <VBox styleClass="main-content">
+
+            <!-- Top Header Bar -->
+            <HBox styleClass="app-header" alignment="CENTER_LEFT" spacing="4">
+                <Label text="Dashboard" styleClass="nav-link-active"/>
+                <Label text="Workflow"  styleClass="nav-link"/>
+                <Region HBox.hgrow="ALWAYS"/>
+                <TextField fx:id="searchField"
+                           styleClass="search-field"
+                           promptText="Search projects..."/>
+                <Button text="New Project"
+                        styleClass="btn-primary"
+                        onAction="#handleCreateProject"/>
+                <Button fx:id="showArchivedBtn"
+                        text="🗄 Archived"
+                        styleClass="btn-archive"
+                        onAction="#handleShowArchived"/>
+            </HBox>
+
+            <!-- Scrollable Body -->
+            <ScrollPane VBox.vgrow="ALWAYS" fitToWidth="true" hbarPolicy="NEVER"
+                        styleClass="main-scroll">
+                <VBox spacing="28" styleClass="main-scroll-content">
+
+                    <!-- Page Title -->
+                    <VBox spacing="5">
+                        <Label fx:id="dashboardTitleLabel"
+                               text="Active Projects"
+                               styleClass="section-title"/>
+                        <Label text="Oversee and manage your development lifecycle."
+                               styleClass="section-subtitle"/>
+                    </VBox>
+
+                    <!-- Stat Cards -->
+                    <HBox spacing="14">
+                        <VBox styleClass="stat-card" spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="ACTIVE PROJECTS"    styleClass="stat-card-label"/>
+                            <Label fx:id="statActiveProjects"   text="—" styleClass="stat-card-value"/>
+                        </VBox>
+                        <VBox styleClass="stat-card" spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="TOTAL COMPLETION"   styleClass="stat-card-label"/>
+                            <Label fx:id="statTotalCompletion"  text="—" styleClass="stat-card-value"/>
+                        </VBox>
+                        <VBox styleClass="stat-card" spacing="6" HBox.hgrow="ALWAYS">
+                            <Label text="UPCOMING DEADLINES" styleClass="stat-card-label"/>
+                            <Label fx:id="statUpcomingDeadlines" text="—" styleClass="stat-card-value"/>
+                        </VBox>
+                    </HBox>
+
+                    <!-- Projects Grid -->
+                    <FlowPane fx:id="projectsGrid" hgap="14" vgap="14" prefWrapLength="900"/>
+
+                    <!-- Empty State -->
+                    <VBox fx:id="emptyState" alignment="CENTER" spacing="14"
+                          styleClass="empty-state-box"
+                          visible="false" managed="false">
+                        <Label text="No projects yet"    styleClass="empty-state-title"/>
+                        <Label text="Create your first project to begin." styleClass="empty-state-sub"/>
+                        <Button text="+ Create First Project"
+                                styleClass="btn-primary"
+                                onAction="#handleCreateProject"/>
+                    </VBox>
+
+                </VBox>
+            </ScrollPane>
+
+            <!-- Status Bar -->
+            <HBox styleClass="status-bar" alignment="CENTER_LEFT">
+                <Label fx:id="statusLabel" text="Ready" styleClass="status-label"/>
+            </HBox>
+
+        </VBox>
+    </center>
+
+</BorderPane>

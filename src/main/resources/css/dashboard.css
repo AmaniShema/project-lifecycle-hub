@@ -1,0 +1,490 @@
+/* ═══════════════════════════════════════════════════
+   Project Life-Cycle Hub — Main Stylesheet
+   ═══════════════════════════════════════════════════ */
+
+/* ── Root / Background ── */
+.root-pane {
+    -fx-background-color: #f0f2f5;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+/* ── Header Bar ── */
+.header-bar {
+    -fx-background-color: #1e1e2e;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.4), 8, 0, 0, 2);
+}
+
+.header-title {
+    -fx-font-size: 22px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #cdd6f4;
+}
+
+.header-subtitle {
+    -fx-font-size: 13px;
+    -fx-text-fill: #a6adc8;
+}
+
+/* ── Filter / Search Bar ── */
+.filter-bar {
+    -fx-background-color: #e8eaf0;
+    -fx-border-color: #d0d4de;
+    -fx-border-width: 0 0 1 0;
+}
+
+.section-title {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #313244;
+}
+
+.search-field {
+    -fx-background-color: white;
+    -fx-border-color: #c0c4d0;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-padding: 6 12 6 12;
+    -fx-font-size: 13px;
+}
+
+.search-field:focused {
+    -fx-border-color: #89b4fa;
+}
+
+/* ── Project List Scroll Area ── */
+.scroll-pane {
+    -fx-background-color: transparent;
+    -fx-background: transparent;
+}
+
+.scroll-pane > .viewport {
+    -fx-background-color: transparent;
+}
+
+.project-list {
+    -fx-background-color: transparent;
+}
+
+/* ── Project Card ── */
+.project-card {
+    -fx-background-color: white;
+    -fx-background-radius: 10px;
+    -fx-border-radius: 10px;
+    -fx-border-color: #e0e4ed;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.08), 6, 0, 0, 2);
+    -fx-cursor: hand;
+}
+
+.project-card:hover {
+    -fx-border-color: #89b4fa;
+    -fx-effect: dropshadow(gaussian, rgba(137,180,250,0.3), 10, 0, 0, 3);
+}
+
+.project-name {
+    -fx-font-size: 16px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #1e1e2e;
+}
+
+.project-description {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6c7086;
+}
+
+.project-date {
+    -fx-font-size: 11px;
+    -fx-text-fill: #9399b2;
+}
+
+/* ── Stage Badge ── */
+.stage-badge {
+    -fx-background-color: #313244;
+    -fx-text-fill: #cdd6f4;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 12px;
+    -fx-font-size: 11px;
+    -fx-font-weight: bold;
+}
+
+.stage-badge-idea        { -fx-background-color: #6c7086; -fx-text-fill: white; }
+.stage-badge-planning    { -fx-background-color: #89b4fa; -fx-text-fill: #1e1e2e; }
+.stage-badge-building    { -fx-background-color: #fab387; -fx-text-fill: #1e1e2e; }
+.stage-badge-testing     { -fx-background-color: #f38ba8; -fx-text-fill: white; }
+.stage-badge-launch      { -fx-background-color: #a6e3a1; -fx-text-fill: #1e1e2e; }
+.stage-badge-maintenance { -fx-background-color: #b4befe; -fx-text-fill: #1e1e2e; }
+
+/* ── Progress Bar ── */
+.progress-bar-main {
+    -fx-pref-height: 10px;
+    -fx-background-radius: 5px;
+    -fx-accent: #a6e3a1;
+}
+
+.progress-bar-main > .track {
+    -fx-background-color: #e0e4ed;
+    -fx-background-radius: 5px;
+}
+
+.progress-bar-main > .bar {
+    -fx-background-color: linear-gradient(to right, #89b4fa, #a6e3a1);
+    -fx-background-radius: 5px;
+    -fx-background-insets: 0;
+}
+
+.progress-text {
+    -fx-font-size: 14px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #313244;
+}
+
+.task-summary {
+    -fx-font-size: 12px;
+    -fx-text-fill: #6c7086;
+}
+
+/* ── Buttons ── */
+.btn-primary {
+    -fx-background-color: #89b4fa;
+    -fx-text-fill: #1e1e2e;
+    -fx-font-weight: bold;
+    -fx-font-size: 13px;
+    -fx-padding: 8 18 8 18;
+    -fx-background-radius: 7px;
+    -fx-cursor: hand;
+}
+
+.btn-primary:hover {
+    -fx-background-color: #b4d0fe;
+}
+
+.btn-secondary {
+    -fx-background-color: #313244;
+    -fx-text-fill: #cdd6f4;
+    -fx-font-size: 12px;
+    -fx-padding: 6 14 6 14;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+}
+
+.btn-secondary:hover {
+    -fx-background-color: #45475a;
+}
+
+.btn-back {
+    -fx-background-color: transparent;
+    -fx-text-fill: #89b4fa;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-cursor: hand;
+    -fx-padding: 4 8 4 0;
+}
+
+.btn-back:hover {
+    -fx-text-fill: #b4d0fe;
+}
+
+.btn-danger {
+    -fx-background-color: #f38ba8;
+    -fx-text-fill: #1e1e2e;
+    -fx-font-size: 12px;
+    -fx-padding: 6 14 6 14;
+    -fx-background-radius: 6px;
+    -fx-cursor: hand;
+    -fx-font-weight: bold;
+}
+
+.btn-danger:hover {
+    -fx-background-color: #f2a7bb;
+}
+
+.btn-small {
+    -fx-background-color: #45475a;
+    -fx-text-fill: #cdd6f4;
+    -fx-font-size: 11px;
+    -fx-padding: 4 10 4 10;
+    -fx-background-radius: 5px;
+    -fx-cursor: hand;
+}
+
+.btn-small:hover {
+    -fx-background-color: #585b70;
+}
+
+.btn-icon-delete {
+    -fx-background-color: transparent;
+    -fx-text-fill: #f38ba8;
+    -fx-font-size: 13px;
+    -fx-cursor: hand;
+    -fx-padding: 2 6 2 6;
+}
+
+.btn-icon-delete:hover {
+    -fx-text-fill: #f2cdcd;
+}
+
+/* ── Stage Panel (Project Detail) ── */
+.stages-container {
+    -fx-background-color: transparent;
+}
+
+.stage-panel {
+    -fx-background-color: white;
+    -fx-background-radius: 8px;
+    -fx-border-radius: 8px;
+    -fx-border-color: #e0e4ed;
+    -fx-border-width: 1px;
+    -fx-effect: dropshadow(gaussian, rgba(0,0,0,0.05), 4, 0, 0, 1);
+}
+
+.stage-panel-header {
+    -fx-background-color: #1e1e2e;
+    -fx-background-radius: 8px 8px 0 0;
+    -fx-padding: 10 15 10 15;
+}
+
+.stage-panel-title {
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #cdd6f4;
+}
+
+.stage-task-count {
+    -fx-font-size: 11px;
+    -fx-text-fill: #6c7086;
+}
+
+/* ── Task Row ── */
+.task-row {
+    -fx-padding: 6 15 6 15;
+    -fx-border-color: transparent transparent #f0f2f5 transparent;
+    -fx-border-width: 1px;
+}
+
+.task-row:hover {
+    -fx-background-color: #f8f9fc;
+}
+
+.task-title {
+    -fx-font-size: 13px;
+    -fx-text-fill: #313244;
+}
+
+.task-title-done {
+    -fx-font-size: 13px;
+    -fx-text-fill: #9399b2;
+    -fx-strikethrough: true;
+}
+
+/* ── Add Task Row ── */
+.add-task-bar {
+    -fx-background-color: #f8f9fc;
+    -fx-padding: 8 15 8 15;
+    -fx-background-radius: 0 0 8px 8px;
+}
+
+.add-task-field {
+    -fx-background-color: white;
+    -fx-border-color: #d0d4de;
+    -fx-border-radius: 5px;
+    -fx-background-radius: 5px;
+    -fx-padding: 5 10 5 10;
+    -fx-font-size: 12px;
+}
+
+.add-task-field:focused {
+    -fx-border-color: #89b4fa;
+}
+
+/* ── Status Bar ── */
+.status-bar {
+    -fx-background-color: #1e1e2e;
+    -fx-border-color: #313244;
+    -fx-border-width: 1 0 0 0;
+}
+
+.status-text {
+    -fx-font-size: 11px;
+    -fx-text-fill: #6c7086;
+}
+
+/* ── Empty State ── */
+.empty-state {
+    -fx-alignment: center;
+    -fx-padding: 60;
+}
+
+.empty-state-title {
+    -fx-font-size: 20px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #45475a;
+}
+
+.empty-state-subtitle {
+    -fx-font-size: 14px;
+    -fx-text-fill: #6c7086;
+}
+
+/* ── Notes Panel ── */
+.notes-titled-pane {
+    -fx-background-color: white;
+    -fx-border-color: #e0e4ed;
+    -fx-border-width: 0 0 1 0;
+}
+
+.notes-titled-pane > .title {
+    -fx-background-color: #f0f4ff;
+    -fx-font-size: 13px;
+    -fx-font-weight: bold;
+    -fx-text-fill: #313244;
+    -fx-padding: 10 15 10 15;
+}
+
+.notes-titled-pane > .title:hover {
+    -fx-background-color: #e8eeff;
+}
+
+.notes-container {
+    -fx-background-color: white;
+}
+
+.notes-area {
+    -fx-background-color: #fafbff;
+    -fx-border-color: #d0d4de;
+    -fx-border-radius: 6px;
+    -fx-background-radius: 6px;
+    -fx-font-size: 12px;
+    -fx-font-family: "Segoe UI", "Arial", sans-serif;
+    -fx-text-fill: #313244;
+    -fx-padding: 10;
+}
+
+.notes-area:focused {
+    -fx-border-color: #89b4fa;
+}
+
+.notes-saved-label {
+    -fx-font-size: 11px;
+    -fx-text-fill: #a6e3a1;
+    -fx-font-style: italic;
+}
+
+/* ── Stage Notes Section ── */
+.stage-notes-section {
+    -fx-background-color: #f8f9ff;
+    -fx-border-color: transparent transparent #e0e4ed transparent;
+    -fx-border-width: 1px;
+}
+
+.btn-notes-toggle {
+    -fx-background-color: transparent;
+    -fx-text-fill: #89b4fa;
+    -fx-font-size: 11px;
+    -fx-cursor: hand;
+    -fx-padding: 3 8 3 8;
+    -fx-border-color: #89b4fa;
+    -fx-border-radius: 4px;
+    -fx-background-radius: 4px;
+}
+
+.btn-notes-toggle:hover {
+    -fx-background-color: #f0f4ff;
+}
+
+/* ── Due Date Labels ── */
+.due-date-label {
+    -fx-font-size: 10px;
+    -fx-padding: 2 7 2 7;
+    -fx-background-radius: 10px;
+    -fx-font-weight: bold;
+}
+
+.due-date-normal {
+    -fx-background-color: #e8eaf0;
+    -fx-text-fill: #6c7086;
+}
+
+.due-date-soon {
+    -fx-background-color: #fef3cd;
+    -fx-text-fill: #856404;
+}
+
+.due-date-overdue {
+    -fx-background-color: #f38ba8;
+    -fx-text-fill: white;
+}
+
+.due-date-done {
+    -fx-background-color: #e8f5e9;
+    -fx-text-fill: #4caf50;
+}
+
+/* ── Task row overdue highlight ── */
+.task-row-overdue {
+    -fx-background-color: #fff5f5;
+}
+
+.task-row-soon {
+    -fx-background-color: #fffdf0;
+}
+
+/* ── Theme Toggle Button ── */
+.btn-theme-toggle {
+    -fx-background-color: #313244;
+    -fx-text-fill: #cdd6f4;
+    -fx-font-size: 12px;
+    -fx-background-radius: 6px;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.btn-theme-toggle:hover {
+    -fx-background-color: #45475a;
+}
+
+/* ── Archive Buttons ── */
+.btn-archive {
+    -fx-background-color: #45475a;
+    -fx-text-fill: #cdd6f4;
+    -fx-background-radius: 6px;
+    -fx-font-size: 12px;
+    -fx-padding: 6 14 6 14;
+    -fx-cursor: hand;
+    -fx-border-color: transparent;
+}
+
+.btn-archive:hover {
+    -fx-background-color: #585b70;
+}
+
+.btn-archive-toggle {
+    -fx-background-color: transparent;
+    -fx-text-fill: #9399b2;
+    -fx-font-size: 12px;
+    -fx-background-radius: 6px;
+    -fx-padding: 6 12 6 12;
+    -fx-cursor: hand;
+    -fx-border-color: #45475a;
+    -fx-border-radius: 6px;
+}
+
+.btn-archive-toggle:hover {
+    -fx-background-color: #313244;
+}
+
+/* ── Archived Project Card ── */
+.project-card-archived {
+    -fx-background-color: #1e1e2e;
+    -fx-background-radius: 12px;
+    -fx-border-color: #45475a;
+    -fx-border-radius: 12px;
+    -fx-border-width: 1px;
+    -fx-opacity: 0.7;
+    -fx-cursor: hand;
+}
+
+.project-card-archived:hover {
+    -fx-opacity: 1.0;
+    -fx-border-color: #89b4fa;
+}
